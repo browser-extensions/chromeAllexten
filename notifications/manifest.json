@@ -1,8 +1,8 @@
 {
-  "name": "打卡时间通知",
+  "name": "时间通知",
   "version": "0.0.1",
   "description":
-    "桌面通知消息, which are \"toast\" windows that pop up on the desktop.",
+    "桌面通知消息, 提醒打开时间.",
   "icons": {"16": "16.png", "48": "48.png", "128": "128.png"},
   "permissions": [
     "notifications"

@@ -2,8 +2,8 @@
 function show() {
   var time = /(..)(:..)/.exec(new Date());     // 当前时间.
   var hour = time[1] % 12 || 12;               // 当前小时.
-  var period = time[1] < 12 ? 'a.m.' : 'p.m.'; 
-  new Notification(hour + time[2] + ' ' + period, {
+  var period = time[1] < 12 ? '上午' : '下午'; 
+  new Notification(period+ ' ' + hour + time[2]  , {
     icon: '48.png',
     body: '时间到了不要忘记.'
   });
