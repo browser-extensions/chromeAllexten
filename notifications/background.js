@@ -1,35 +1,27 @@
-// Copyright (c) 2011 The Chromium Authors. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
 
-/*
-  Displays a notification with the current time. Requires "notifications"
-  permission in the manifest file (or calling
-  "Notification.requestPermission" beforehand).
-*/
 function show() {
-  var time = /(..)(:..)/.exec(new Date());     // The prettyprinted time.
-  var hour = time[1] % 12 || 12;               // The prettyprinted hour.
-  var period = time[1] < 12 ? 'a.m.' : 'p.m.'; // The period of the day.
+  var time = /(..)(:..)/.exec(new Date());     // 当前时间.
+  var hour = time[1] % 12 || 12;               // 当前小时.
+  var period = time[1] < 12 ? 'a.m.' : 'p.m.'; 
   new Notification(hour + time[2] + ' ' + period, {
     icon: '48.png',
-    body: 'Time to make the toast.'
+    body: '时间到了不要忘记.'
   });
 }
 
-// Conditionally initialize the options.
+// 有条件初始化选项.
 if (!localStorage.isInitialized) {
-  localStorage.isActivated = true;   // The display activation.
-  localStorage.frequency = 1;        // The display frequency, in minutes.
-  localStorage.isInitialized = true; // The option initialization.
+  localStorage.isActivated = true;   // The display 激活.
+  localStorage.frequency = 1;        // The display 频率, in minutes.
+  localStorage.isInitialized = true; // The option 初始化.
 }
 
-// Test for notification support.
+// 测试通知支持.
 if (window.Notification) {
-  // While activated, show notifications at the display frequency.
+  // 虽然激活，显示在显示频率的通知.
   if (JSON.parse(localStorage.isActivated)) { show(); }
 
-  var interval = 0; // The display interval, in minutes.
+  var interval = 0; // 显示间隔，以分钟.
 
   setInterval(function() {
     interval++;
