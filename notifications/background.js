@@ -5,7 +5,7 @@ function show() {
   var period = time[1] < 12 ? '上午' : '下午'; 
   new Notification(period+ ' ' + hour + time[2]  , {
     icon: '48.png',
-    body: '时间到了不要忘记.'
+    body: '时间到了不要忘记签退吃饭.'
   });
 }
 
